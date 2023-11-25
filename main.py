@@ -2,8 +2,8 @@ from fastapi import FastAPI
 import PyPDF2
 
 app = FastAPI()
-
-def pdf_to_text(pdf_path):
+@app.get("/pdf/{pdf_path}")
+async def pdf_to_text(pdf_path: str):
     text = ""
     with open(pdf_path, "rb") as file:
         pdf_reader = PyPDF2.PdfFileReader(file)
