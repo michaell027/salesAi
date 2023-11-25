@@ -2,9 +2,10 @@ from fastapi import FastAPI
 import PyPDF2
 
 app = FastAPI()
-@app.get("/pdf/{pdf_path}")
-async def pdf_to_text(pdf_path: str):
+@app.get("/pdf")
+async def pdf_to_text():
     text = ""
+    pdf_path = "./pdf/RFPDOC_43752.pdf"
     with open(pdf_path, "rb") as file:
         pdf_reader = PyPDF2.PdfFileReader(file)
         num_pages = pdf_reader.numPages
